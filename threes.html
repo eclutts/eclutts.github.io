@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Threes!</title>
+    </head>
+    <body onload="start_game()">
+        <p id="game_board"></p>
+        <button onclick="start_game()">Reset</button>
+        <script src="javascripts/threes_board.js"></script>
+        <script>
+            function $(x) {return document.getElementById(x);} 
+
+            function start_game(){
+                game_board = new threes_game(0);
+
+                document.getElementById("game_board").innerHTML = board2text()
+            }
+            function board2text(){
+                str = ""
+                for(let i = 0; i < 4; i++){
+                    for(let j = 0; j < 4; j++){
+                        str += game_board.board.board_state[i][j] + " ";
+                    }
+                    str += "<br>";
+                }
+                return str
+            }
+            document.addEventListener('keydown', function(e) {
+                let t = false;
+                switch (e.keyCode) {
+                case 37:
+                    t = game_board.move_left();
+                    $("game_board").innerHTML = board2text();
+                    break;
+                case 38:
+                    t = game_board.move_up();
+                    $("game_board").innerHTML = board2text();
+                    break;
+                case 39:
+                    t = game_board.move_right();
+                    $("game_board").innerHTML = board2text();
+                    break;
+                case 40:
+                    t = game_board.move_down();
+                    $("game_board").innerHTML = board2text();
+                    break;
+                }
+                if(t) {
+                    alert("You Lost!")
+                }
+            });
+        </script>
+    </body>
+</html>
