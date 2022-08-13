@@ -8,9 +8,11 @@ function myFunction() {
 }
 function increment() {
     var str = ""
-    let q = document.getElementById("fizbuzz").data-val
+    let h = document.getElementById("value")
+    let q = parseInt(h.getAttribute('val'))
     q = q + 1
-    document.getElementById("fizbuzz").setAttribute(data-val, q)
+    h.setAttribute('val', q.toString())
+
     if (q % 3 == 0) {
         str = str.concat("fizz")
     }
@@ -18,7 +20,7 @@ function increment() {
         str = str.concat("buzz")
     }
     if (str == "") {
-        document.getElementById("fizbuzz").innerHTML = q
+        document.getElementById("fizbuzz").innerHTML = q.toString()
     } else {
         document.getElementById("fizbuzz").innerHTML = str
     }
